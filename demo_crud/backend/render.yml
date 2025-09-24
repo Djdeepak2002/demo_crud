@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: django-crud-api
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py migrate
+    startCommand: gunicorn demo_crud.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: 0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: demo-crud-api.onrender.com
+databases:
+  - name: postgres-db
+    databaseName: djangodb
+    user: postgres
