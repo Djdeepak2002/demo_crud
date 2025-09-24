@@ -1,0 +1,35 @@
+# ExchangeRate-API.com Testing Commands
+# Make sure to set your API key in .env file first!
+
+# Step 1: Set your API key in .env file
+# Edit the .env file and replace YOUR_API_KEY_HERE with your actual API key
+
+# Step 2: Test management commands (run these in PowerShell from backend directory)
+
+# Fetch a specific currency pair
+# C:/Users/User/Desktop/demo_crud/venv/Scripts/python.exe manage.py fetch_rates --base USD --target INR
+
+# Fetch USD to EUR
+# C:/Users/User/Desktop/demo_crud/venv/Scripts/python.exe manage.py fetch_rates --base USD --target EUR
+
+# Fetch USD to GBP
+# C:/Users/User/Desktop/demo_crud/venv/Scripts/python.exe manage.py fetch_rates --base USD --target GBP
+
+# Fetch ALL available rates for USD (this will store many rates!)
+# C:/Users/User/Desktop/demo_crud/venv/Scripts/python.exe manage.py fetch_rates --base USD --all
+
+# Step 3: Test API endpoints
+
+# 1. GET all stored rates: http://127.0.0.1:8000/api/catalog/rates/
+
+# 2. POST to fetch live rate via API:
+# URL: http://127.0.0.1:8000/api/catalog/rates/fetch_live_rate/
+# Method: POST
+# Body: {"base": "USD", "target": "INR"}
+
+# Step 4: Available currency codes you can test with:
+# USD, EUR, GBP, INR, JPY, AUD, CAD, CHF, CNY, SEK, NZD, MXN, SGD, HKD, NOK, TRY, ZAR, BRL, KRW, etc.
+
+# curl examples:
+# curl -X POST "http://127.0.0.1:8000/api/catalog/rates/fetch_live_rate/" -H "Content-Type: application/json" -d '{"base": "USD", "target": "INR"}'
+# curl -X POST "http://127.0.0.1:8000/api/catalog/rates/fetch_live_rate/" -H "Content-Type: application/json" -d '{"base": "USD", "target": "EUR"}'
