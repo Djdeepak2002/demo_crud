@@ -7,6 +7,10 @@ services:
     envVars:
       - key: DEBUG
         value: 0
+      - key: DJANGO_SETTINGS_MODULE
+        value: demo_crud.settings
+      - key: PYTHONPATH
+        value: .
       - key: SECRET_KEY
         generateValue: true
       - key: ALLOWED_HOSTS
@@ -15,8 +19,6 @@ services:
         fromDatabase:
           name: postgres-db
           property: connectionString
-      - key: PYTHON_VERSION
-        value: 3.10.0
 databases:
   - name: postgres-db
     databaseName: djangodb
