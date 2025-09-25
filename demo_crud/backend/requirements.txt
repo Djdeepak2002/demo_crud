@@ -4,3 +4,4 @@ psycopg2-binary
 requests
 gunicorn
 python-dotenv
+dj-database-url
