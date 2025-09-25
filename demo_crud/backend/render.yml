@@ -12,13 +12,15 @@ services:
       - key: PYTHONPATH
         value: .
       - key: SECRET_KEY
-        generateValue: true
+        value: "911ced415fdac0247317a61bb3b07e35"
       - key: ALLOWED_HOSTS
-        value: demo-crud-api.onrender.com
+        value: demo-crud-api.onrender.com,localhost,127.0.0.1
       - key: DATABASE_URL
         fromDatabase:
           name: postgres-db
           property: connectionString
+      - key: EXCHANGE_RATE_API_KEY
+        value: "0a4abbaab0a47aa1edb1b8a9"
 databases:
   - name: postgres-db
     databaseName: djangodb
