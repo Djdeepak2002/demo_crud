@@ -2,8 +2,8 @@ services:
   - type: web
     name: django-crud-api
     env: python
-    buildCommand: pip install -r requirements.txt && python manage.py migrate
-    startCommand: gunicorn demo_crud.wsgi:application
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: gunicorn demo_crud.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DEBUG
         value: 0
@@ -11,7 +11,14 @@ services:
         generateValue: true
       - key: ALLOWED_HOSTS
         value: demo-crud-api.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.10.0
 databases:
   - name: postgres-db
     databaseName: djangodb
     user: postgres
+    plan: free
