@@ -53,13 +53,15 @@ TEMPLATES = [
 WSGI_APPLICATION = "demo_crud.wsgi.application"
 
 # Database configuration
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'postgres://postgres:postgres@localhost:5432/djangoDB'),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db_nesv',
+        'USER': 'django_db_nesv_user',
+        'PASSWORD': '8lFaMmZlFqxllOlib33m6wdnPGkHoTOS',
+        'HOST': 'dpg-d3agi2c9c44c73dspom0-a',
+        'PORT': '5432',
+    }
 }
 
 STATIC_URL = "/static/"
